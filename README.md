@@ -6,7 +6,7 @@ This is a reproducer of a bug reported in [FLINK-28591](https://issues.apache.or
 
 Run
 ```shell
-mvn clean install exec:java -Dexec.mainClass="com.github.swtwsk.FlinkArrayRowBugJob"
+mvn clean install exec:java -Dexec.mainClass=com.github.swtwsk.FlinkArrayRowBugJob
 ```
 and `cat` the file that got generated (named `part-...`).
 
