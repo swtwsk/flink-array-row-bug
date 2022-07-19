@@ -23,6 +23,7 @@ import java.nio.file.Paths;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
+import org.apache.flink.util.OperatingSystem;
 
 public class FlinkArrayRowBugJob {
 	public static void main(String[] args) throws Exception {
@@ -42,7 +43,7 @@ public class FlinkArrayRowBugJob {
 				"  'path' = '%s',\n" +
 				"  'format' = 'json'\n" +
 				")",
-				"file://" + currentPath.toAbsolutePath());
+				(OperatingSystem.isWindows() ? "file:///" : "file://") + currentPath.toAbsolutePath());
 		tEnv.executeSql(createTable);
 
 		final String insert =
