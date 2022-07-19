@@ -35,9 +35,7 @@ public class FlinkArrayRowBugJob {
 		final String createTable = String.format(
 				"CREATE TABLE wrongArray (\n" +
 				"    foo bigint,\n" +
-				"    bar ARRAY<ROW<`foo1` STRING, `foo2` STRING>>,\n" +
-				"    strings ARRAY<STRING>,\n" +
-				"    intRows ARRAY<ROW<`a` INT, `b` INT>>\n" +
+				"    bar ARRAY<ROW<`foo1` STRING, `foo2` STRING>>\n" +
 				") WITH (\n" +
 				"  'connector' = 'filesystem',\n" +
 				"  'path' = '%s',\n" +
@@ -53,9 +51,7 @@ public class FlinkArrayRowBugJob {
 				"        array[\n" +
 				"            ('Field1', 'Value1'),\n" +
 				"            ('Field2', 'Value2')\n" +
-				"        ],\n" +
-				"        array['foo', 'bar', 'foobar'],\n" +
-				"        array[ROW(1, 1), ROW(2, 2)]\n" +
+				"        ]\n" +
 				"    FROM (VALUES(1))\n" +
 				")";
 
